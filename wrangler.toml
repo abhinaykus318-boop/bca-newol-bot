@@ -1,1 +1,5 @@
-
+name = "bca-newol-bot"
+main = "worker.py"
+compatibility_date = "2026-08-15"
+compatibility_flags = ["python_workers"]
+workers_dev = true

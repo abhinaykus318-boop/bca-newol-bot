@@ -4,28 +4,28 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
-  run:
+  run-bot:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
-      - name: Install packages
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
-      - name: Run bot
+      - name: Run BCA NEWOL Bot
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-
-        run: python bot.py
+        run: |
+          python bot.py
